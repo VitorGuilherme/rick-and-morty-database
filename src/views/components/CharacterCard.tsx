@@ -132,7 +132,7 @@ export function CharacterCard({ character, onSelect, index = 0 }: CharacterCardP
           src="https://media.giphy.com/media/IgA2AJscUx3gTfITIY/giphy.gif"
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-10"
         />
       </div>
     </article>

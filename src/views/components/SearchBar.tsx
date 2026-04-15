@@ -4,6 +4,8 @@
  * data-testid="search-input" / "search-button"
  */
 
+import portalImg from '../../public/portal.png'
+
 interface SearchBarProps {
   value: string
   onChange: (value: string) => void
@@ -12,13 +14,13 @@ interface SearchBarProps {
   totalLoaded?: number
 }
 
-export function SearchBar({ value, onChange, placeholder = 'Buscar personagem...', resultCount, totalLoaded }: SearchBarProps) {
+export function SearchBar({ value, onChange, placeholder = 'Buscar personagem...', resultCount }: SearchBarProps) {
   return (
     <div className="w-full max-w-2xl mx-auto">
       <div className="relative group">
-        {/* Prefixo ">" estilo terminal */}
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none font-body text-rm-green/60 group-focus-within:text-rm-green transition-colors text-sm">
-          &gt;_
+        {/* Ícone vortex/portal */}
+        <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none text-rm-green/60 group-focus-within:text-rm-green transition-colors">
+          <img src={portalImg} alt="" className="w-5 h-5 object-contain" />
         </div>
 
         <input
@@ -41,7 +43,7 @@ export function SearchBar({ value, onChange, placeholder = 'Buscar personagem...
             focus:border-rm-green/50
             focus:bg-rm-dark-1
             focus:shadow-[0_0_0_1px_rgba(57,255,20,0.15)]
-            rounded-none
+            rounded-full
             [-webkit-appearance:none]
           "
           autoComplete="off"
@@ -70,11 +72,6 @@ export function SearchBar({ value, onChange, placeholder = 'Buscar personagem...
             {resultCount === 0
               ? '// nenhum resultado'
               : `// ${resultCount} resultado${resultCount !== 1 ? 's' : ''} encontrado${resultCount !== 1 ? 's' : ''}`}
-          </p>
-        )}
-        {!value.trim() && totalLoaded !== undefined && totalLoaded > 0 && (
-          <p className="text-[10px] font-body text-rm-gray-muted tracking-widest ml-auto">
-            // {totalLoaded} personagens carregados
           </p>
         )}
       </div>

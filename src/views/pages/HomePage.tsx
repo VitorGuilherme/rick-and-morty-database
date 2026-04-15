@@ -122,28 +122,11 @@ export function HomePage() {
       <div className="mb-8 space-y-3">
         <div className="flex items-end gap-4 flex-wrap">
           <h2 className="font-display text-5xl sm:text-7xl text-rm-white tracking-wide leading-none">
-            PERSONAGENS
+            Rick and Morty Database
           </h2>
-          {totalAvailable > 0 && (
-            <span className="font-body text-xs text-rm-gray-muted mb-1">
-              // {totalLoaded} de {totalAvailable} carregados
-            </span>
-          )}
         </div>
 
-        {/* Barra de progresso */}
-        {totalAvailable > 0 && (
-          <div className="w-full h-px bg-rm-dark-4 relative overflow-hidden">
-            <div
-              className="absolute left-0 top-0 h-full bg-rm-green/60 transition-all duration-500"
-              style={{ width: `${loadPercent}%` }}
-            />
-          </div>
-        )}
-
-        <p className="text-[11px] font-body text-rm-gray-muted">
-          // clique em um card para abrir o portal de detalhes
-        </p>
+      
       </div>
 
       {/* ── Busca + filtros ───────────────────────────────────────────── */}
@@ -151,7 +134,7 @@ export function HomePage() {
         <SearchBar
           value={searchQuery}
           onChange={setSearchQuery}
-          placeholder="buscar por nome ou espécie..."
+          placeholder="Busque o personagem pelo nome..."
           resultCount={searchQuery.trim() ? displayedCharacters.length : undefined}
           totalLoaded={totalLoaded}
         />

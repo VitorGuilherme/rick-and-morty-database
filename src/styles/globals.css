@@ -42,7 +42,7 @@ body {
 }
 
 /* Scanlines — efeito CRT obrigatório para qualquer coisa que tenha "portal" no tema */
-body::before {
+/* body::before {
   content: '';
   position: fixed;
   inset: 0;
@@ -55,7 +55,7 @@ body::before {
     rgba(0, 0, 0, 0.03) 2px,
     rgba(0, 0, 0, 0.03) 4px
   );
-}
+} */
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--dark-1); }
