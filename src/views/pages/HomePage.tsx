@@ -10,26 +10,26 @@
  *   - Grid 2→3→4→5 colunas
  */
 
-import { useEffect, useMemo, useState } from 'react'
-import { useInView } from 'react-intersection-observer'
-import { useCharacters } from '@/viewmodels/useCharacters'
-import { useCharacterDetail } from '@/viewmodels/useCharacterDetail'
-import { CharacterCard } from '../components/CharacterCard'
-import { SearchBar } from '../components/SearchBar'
-import { LoadingSpinner } from '../components/LoadingSpinner'
-import { CharacterModal } from './CharacterModal'
-import type { CharacterStatus } from '@/models/types'
+import type { CharacterStatus } from "@/models/types";
+import { useCharacterDetail } from "@/viewmodels/useCharacterDetail";
+import { useCharacters } from "@/viewmodels/useCharacters";
+import { useEffect, useMemo, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { CharacterCard } from "../components/CharacterCard";
+import { LoadingSpinner } from "../components/LoadingSpinner";
+import { SearchBar } from "../components/SearchBar";
+import { CharacterModal } from "./CharacterModal";
 
 // ─── Filtro de status ─────────────────────────────────────────────────────────
 
-type StatusFilter = CharacterStatus | 'All'
+type StatusFilter = CharacterStatus | "All";
 
 const STATUS_OPTIONS: { value: StatusFilter; label: string; dot: string }[] = [
-  { value: 'All',     label: 'Todos',       dot: 'bg-rm-gray-muted' },
-  { value: 'Alive',   label: 'Vivos',       dot: 'bg-rm-green' },
-  { value: 'Dead',    label: 'Mortos',      dot: 'bg-red-500' },
-  { value: 'unknown', label: 'Desconhecido', dot: 'bg-rm-gray-light' },
-]
+  { value: "All", label: "Todos", dot: "bg-rm-gray-muted" },
+  { value: "Alive", label: "Vivos", dot: "bg-rm-green" },
+  { value: "Dead", label: "Mortos", dot: "bg-red-500" },
+  { value: "unknown", label: "Desconhecido", dot: "bg-rm-gray-light" },
+];
 
 // ─── Componente ───────────────────────────────────────────────────────────────
 
@@ -40,17 +40,21 @@ export function HomePage() {
     error,
     hasMore,
     totalLoaded,
-    totalAvailable,
     searchQuery,
     setSearchQuery,
     loadMore,
     retry,
-  } = useCharacters()
+  } = useCharacters();
 
-  const { selectedCharacter, detailStatus, detailError, openDetail, closeDetail } =
-    useCharacterDetail()
+  const {
+    selectedCharacter,
+    detailStatus,
+    detailError,
+    openDetail,
+    closeDetail,
+  } = useCharacterDetail();
 
-  const [statusFilter, setStatusFilter] = useState<StatusFilter>('All')
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("All");
 
   // ─── Filtro local de status ────────────────────────────────────────────
 
@@ -61,32 +65,28 @@ export function HomePage() {
    * filtro tem responsabilidade única.
    */
   const displayedCharacters = useMemo(() => {
-    if (statusFilter === 'All') return characters
-    return characters.filter((c) => c.status === statusFilter)
-  }, [characters, statusFilter])
+    if (statusFilter === "All") return characters;
+    return characters.filter((c) => c.status === statusFilter);
+  }, [characters, statusFilter]);
 
   // ─── Scroll infinito ───────────────────────────────────────────────────
 
   const { ref: sentinelRef, inView } = useInView({
     threshold: 0.1,
-    rootMargin: '300px',
-  })
+    rootMargin: "300px",
+  });
 
   useEffect(() => {
-    if (inView && hasMore && status !== 'loading') {
-      loadMore()
+    if (inView && hasMore && status !== "loading") {
+      loadMore();
     }
-  }, [inView, hasMore, status, loadMore])
+  }, [inView, hasMore, status, loadMore]);
 
   // ─── Progresso de carregamento ─────────────────────────────────────────
 
-  const loadPercent = totalAvailable > 0
-    ? Math.round((totalLoaded / totalAvailable) * 100)
-    : 0
-
   // ─── Estado de erro inicial ────────────────────────────────────────────
 
-  if (status === 'error' && totalLoaded === 0) {
+  if (status === "error" && totalLoaded === 0) {
     return (
       <div
         className="flex flex-col items-center justify-center py-32 gap-6 text-center"
@@ -97,7 +97,9 @@ export function HomePage() {
           <p className="text-[10px] font-body uppercase tracking-widest text-red-400">
             // erro de conexão
           </p>
-          <p className="text-sm font-body text-rm-gray-light leading-relaxed">{error}</p>
+          <p className="text-sm font-body text-rm-gray-light leading-relaxed">
+            {error}
+          </p>
           <button
             onClick={retry}
             className="
@@ -111,7 +113,7 @@ export function HomePage() {
           </button>
         </div>
       </div>
-    )
+    );
   }
 
   // ─── Render ────────────────────────────────────────────────────────────
@@ -125,8 +127,6 @@ export function HomePage() {
             Rick and Morty Database
           </h2>
         </div>
-
-      
       </div>
 
       {/* ── Busca + filtros ───────────────────────────────────────────── */}
@@ -135,7 +135,9 @@ export function HomePage() {
           value={searchQuery}
           onChange={setSearchQuery}
           placeholder="Busque o personagem pelo nome..."
-          resultCount={searchQuery.trim() ? displayedCharacters.length : undefined}
+          resultCount={
+            searchQuery.trim() ? displayedCharacters.length : undefined
+          }
           totalLoaded={totalLoaded}
         />
 
@@ -149,9 +151,10 @@ export function HomePage() {
                 flex items-center gap-1.5 px-3 py-1.5
                 border text-[10px] font-body uppercase tracking-widest
                 transition-all duration-150
-                ${statusFilter === value
-                  ? 'border-rm-green/50 text-rm-green bg-rm-green/5'
-                  : 'border-rm-dark-4 text-rm-gray-muted hover:border-rm-dark-3 hover:text-rm-gray-light'
+                ${
+                  statusFilter === value
+                    ? "border-rm-green/50 text-rm-green bg-rm-green/5"
+                    : "border-rm-dark-4 text-rm-gray-muted hover:border-rm-dark-3 hover:text-rm-gray-light"
                 }
               `}
             >
@@ -163,7 +166,7 @@ export function HomePage() {
       </div>
 
       {/* ── Loading inicial ───────────────────────────────────────────── */}
-      {status === 'loading' && totalLoaded === 0 && (
+      {status === "loading" && totalLoaded === 0 && (
         <LoadingSpinner message="Abrindo portal interdimensional..." />
       )}
 
@@ -183,7 +186,10 @@ export function HomePage() {
 
           {/* Sem resultados */}
           {displayedCharacters.length === 0 && (
-            <div className="py-20 text-center space-y-2" data-testid="error-message">
+            <div
+              className="py-20 text-center space-y-2"
+              data-testid="error-message"
+            >
               <p className="font-display text-4xl text-rm-dark-4 tracking-wide">
                 DIMENSÃO VAZIA
               </p>
@@ -196,12 +202,20 @@ export function HomePage() {
           {/* ── Sentinela do scroll infinito ───────────────────────── */}
           {!searchQuery.trim() && (
             <div ref={sentinelRef} className="py-10 flex justify-center">
-              {status === 'loading' && (
-                <LoadingSpinner message="Carregando mais dimensões..." size="sm" />
+              {status === "loading" && (
+                <LoadingSpinner
+                  message="Carregando mais dimensões..."
+                  size="sm"
+                />
               )}
-              {status === 'error' && totalLoaded > 0 && (
-                <div className="text-center space-y-3" data-testid="error-message">
-                  <p className="text-xs font-body text-rm-gray-light">{error}</p>
+              {status === "error" && totalLoaded > 0 && (
+                <div
+                  className="text-center space-y-3"
+                  data-testid="error-message"
+                >
+                  <p className="text-xs font-body text-rm-gray-light">
+                    {error}
+                  </p>
                   <button
                     onClick={retry}
                     className="text-[10px] font-body uppercase tracking-widest text-rm-green hover:underline"
@@ -210,7 +224,7 @@ export function HomePage() {
                   </button>
                 </div>
               )}
-              {!hasMore && status === 'success' && (
+              {!hasMore && status === "success" && (
                 <div className="text-center space-y-2">
                   <div className="w-6 h-px bg-rm-green/40 mx-auto" />
                   <p className="text-[10px] font-body uppercase tracking-widest text-rm-gray-muted">
@@ -233,5 +247,5 @@ export function HomePage() {
         />
       )}
     </>
-  )
+  );
 }
