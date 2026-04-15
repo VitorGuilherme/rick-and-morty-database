@@ -1,0 +1,76 @@
+{
+  "_comment": "Mock local de habilidades/fraquezas por ID de personagem. Em produção viria de uma API ou CMS.",
+
+  "1": {
+    "abilities": ["Gênio científico nível C-137", "Viagem interdimensional", "Criação de portal gun", "Beber qualquer coisa e sobreviver"],
+    "weaknesses": ["Alcoolismo funcional", "Depressão existencial profunda", "Apego secreto à família"]
+  },
+  "2": {
+    "abilities": ["Sobreviver de alguma forma em qualquer dimensão", "Otimismo irracional", "Resistência ao trauma"],
+    "weaknesses": ["Ingenuidade crônica", "Ansiedade generalizada", "Completamente dependente do avô"]
+  },
+  "3": {
+    "abilities": ["Gestão de vida suburbana", "Resistência emocional passiva-agressiva", "Tolerância ao caos doméstico"],
+    "weaknesses": ["Dependência emocional do Rick", "Mediocrity acceptance syndrome"]
+  },
+  "4": {
+    "abilities": ["Cirurgia cardíaca de alto nível", "Culinária sobre-humana", "Existencialismo funcional"],
+    "weaknesses": ["Crise de identidade constante", "Dependência da aprovação de Rick"]
+  },
+  "5": {
+    "abilities": ["Atletismo universitário", "Resistência a humilhações", "Naivety como superpoder"],
+    "weaknesses": ["QI abaixo da média", "Totalmente manipulável", "Sem autoconsciência"]
+  },
+  "6": {
+    "abilities": ["Inteligência superior", "Manipulação interpessoal", "Ambição sem limites"],
+    "weaknesses": ["Sem empatia funcional", "Megalomania recorrente"]
+  },
+  "13": {
+    "abilities": ["Absorção de habilidades alheias", "Transformação física total", "Imortalidade prática"],
+    "weaknesses": ["Instabilidade de personalidade", "Obsessão com a Beth certa"]
+  },
+  "15": {
+    "abilities": ["Força sobre-humana de polvo gigante", "Raiva justificada", "Carisma alienígena"],
+    "weaknesses": ["Perseguição constante pela família Smith", "Sem documentação interdimensional"]
+  },
+  "19": {
+    "abilities": ["Autoridade governamental intergaláctica", "Intimidação institucional"],
+    "weaknesses": ["Completamente inútil operacionalmente", "Burocracia paralisante"]
+  },
+  "22": {
+    "abilities": ["Treinamento de combate aprimorado", "Infiltração e espionagem", "Pilotagem de naves"],
+    "weaknesses": ["Trauma de abandono severo", "Raiva não processada"]
+  },
+  "25": {
+    "abilities": ["Regeneração celular acelerada", "Múltiplas formas físicas", "Memória perfeita"],
+    "weaknesses": ["Existência compartilhada com aliens", "Identidade fragmentada"]
+  },
+  "40": {
+    "abilities": ["Tecnologia Gromflomita avançada", "Autoridade policial galáctica", "Persistência irritante"],
+    "weaknesses": ["Rick sempre escapa", "Planos sempre falham na última hora"]
+  },
+  "45": {
+    "abilities": ["Linguagem universal", "Adaptação cultural", "Resistência ao ridículo"],
+    "weaknesses": ["Dependência emocional extrema", "Desorientação existencial crônica"]
+  },
+  "62": {
+    "abilities": ["Conhecimento profundo de cultura pop", "Determinação inexplicável", "Amizade inabalável"],
+    "weaknesses": ["Completamente fora de lugar em situações de perigo", "Zero habilidades de combate"]
+  },
+  "90": {
+    "abilities": ["Autoridade presidencial norte-americana", "Resistência a eventos cósmicos absurdos"],
+    "weaknesses": ["Completamente despreparado para ameaças reais", "Credulidade política"]
+  },
+  "103": {
+    "abilities": ["Habilidade de fuga com planos ridículos", "Criatividade sous pression"],
+    "weaknesses": ["Planos sempre quase não funcionam", "Dependência do Rick para os detalhes"]
+  },
+  "175": {
+    "abilities": ["Existência simultânea em múltiplas dimensões", "Acesso a conhecimento cósmico"],
+    "weaknesses": ["Instabilidade dimensional", "Paradoxos de identidade constantes"]
+  },
+  "239": {
+    "abilities": ["Nanotecnologia interna", "Hacking biológico", "Invisibilidade tecnológica"],
+    "weaknesses": ["Vulnerável a EMPs", "Dependência de fonte de energia"]
+  }
+}

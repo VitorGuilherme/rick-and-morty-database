@@ -1,0 +1,118 @@
+/*
+ * globals.css
+ * Tema Rick & Morty: dark sci-fi com neon verde portal, scanlines e Space Mono.
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green: #39ff14;
+  --green-dim: #2bc210;
+  --green-glow: rgba(57, 255, 20, 0.35);
+  --black: #060608;
+  --dark-1: #0d0d12;
+  --dark-2: #14141c;
+  --dark-3: #1c1c27;
+  --white: #e8e8f0;
+  --font-display: 'Creepster', cursive;
+  --font-body: 'Space Mono', monospace;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  background-color: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.6;
+  min-height: 100dvh;
+  /* Textura sutil de ruído — dá aquela sensação de tela velha */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* Scanlines — efeito CRT obrigatório para qualquer coisa que tenha "portal" no tema */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--dark-1); }
+::-webkit-scrollbar-thumb { background: var(--green-dim); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--green); }
+
+/* Status badges */
+.status-alive  { color: #39ff14; }
+.status-dead   { color: #ff4444; }
+.status-unknown { color: #9090a8; }
+
+/* Glow verde — usado em vários elementos interativos */
+.glow-green {
+  box-shadow: 0 0 10px var(--green-glow), 0 0 30px rgba(57, 255, 20, 0.1);
+}
+.text-glow {
+  text-shadow: 0 0 10px var(--green-glow);
+}
+
+/* Skeleton shimmer */
+.skeleton {
+  background: linear-gradient(90deg, var(--dark-2) 0%, var(--dark-3) 50%, var(--dark-2) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Border verde glow */
+.border-glow {
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  box-shadow: inset 0 0 20px rgba(57, 255, 20, 0.03);
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(57,255,20,0.2); }
+  50%       { box-shadow: 0 0 20px rgba(57,255,20,0.5), 0 0 40px rgba(57,255,20,0.1); }
+}
+@keyframes portalSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92%  { opacity: 1; }
+  93%  { opacity: 0.4; }
+  94%  { opacity: 1; }
+  96%  { opacity: 0.6; }
+  97%  { opacity: 1; }
+}
